@@ -21,11 +21,12 @@ const ExpenseForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const newExpense = {
+      id: Math.random() * 5,
       title: title,
       amount: amount,
       date: date,
     };
-    console.log(newExpense);
+
     props.onAddExpense(newExpense);
 
     setTitle("");
@@ -38,11 +39,17 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleInputHandler} value={title} />
+          <input
+            required
+            type="text"
+            onChange={titleInputHandler}
+            value={title}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
           <input
+            required
             type="number"
             min="0.01"
             step="0.01"
@@ -53,6 +60,7 @@ const ExpenseForm = (props) => {
         <div className="new-expense__control">
           <label>Date</label>
           <input
+            required
             type="date"
             min="2019-01-01"
             max="2023-04-01"
