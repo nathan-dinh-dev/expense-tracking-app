@@ -29,18 +29,12 @@ const ExpenseList = (props) => {
       return data.sort((a, b) => a.amount - b.amount);
   };
 
-  const yearFilteredArray = () => {
-    if (parseInt(props.yearFiltered) === 0) return sorting(props.items);
-    return sorting(
-      props.items.filter(
-        (item) => item.date.getFullYear() === parseInt(props.yearFiltered)
-      )
-    );
-  };
+  if (props.items.length === 0)
+    return <h4 className="expense-list__not-found">No expenses found.</h4>;
 
   return (
     <ul className="expense-list">
-      {yearFilteredArray().map((item) => (
+      {sorting(props.items).map((item) => (
         <ExpenseItem
           key={item.id}
           title={item.title}

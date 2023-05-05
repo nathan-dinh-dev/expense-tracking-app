@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import ExpenseFilter from "../ExpenseFilter/ExpenseFilter";
 import { useState } from "react";
 import ExpenseList from "./ExpenseList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [yearFiltered, setYearFilter] = useState("0000");
@@ -16,8 +17,16 @@ const Expenses = (props) => {
     setSortedOption(option);
   };
 
+  const yearFilteredArray = () => {
+    if (parseInt(yearFiltered) === 0) return props.items;
+    return props.items.filter(
+      (item) => item.date.getFullYear() === parseInt(yearFiltered)
+    );
+  };
+
   return (
     <Card className="expenses">
+      <ExpensesChart items={yearFilteredArray()} />
       <ExpenseFilter
         yearSelected={yearFiltered}
         onGetYear={getYearHandler}
@@ -25,7 +34,7 @@ const Expenses = (props) => {
         onSortedOption={sortedOptionHandler}
       />
       <ExpenseList
-        items={props.items}
+        items={yearFilteredArray()}
         yearFiltered={yearFiltered}
         sortedOption={sortedOption}
       />
