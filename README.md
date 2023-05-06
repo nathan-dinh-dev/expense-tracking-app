@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with Expense Tracking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application's goal is to make it possible for users to manage (add and delete) their spending.
+
+- To add a new spending, click on "add a new expense" button and fill out the form.
+
+- The spending can be sorted in "Newest", "Latest", "Amount: High to Low", or "Amount: Low to High".
+
+- It is possible to filter expenses by year, and there is also a chart showing monthly spending.
 
 ## Available Scripts
 
