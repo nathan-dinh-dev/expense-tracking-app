@@ -29,6 +29,10 @@ const ExpenseList = (props) => {
       return data.sort((a, b) => a.amount - b.amount);
   };
 
+  const removeHandler = (itemID) => {
+    props.onRemove(itemID);
+  };
+
   if (props.items.length === 0)
     return <h4 className="expense-list__not-found">No expenses found.</h4>;
 
@@ -36,10 +40,13 @@ const ExpenseList = (props) => {
     <ul className="expense-list">
       {sorting(props.items).map((item) => (
         <ExpenseItem
+          id={item.id}
           key={item.id}
           title={item.title}
           amount={item.amount}
           date={item.date}
+          isDelete={props.isDelete}
+          onRemove={removeHandler}
         />
       ))}
     </ul>

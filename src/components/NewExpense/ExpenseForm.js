@@ -1,5 +1,6 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
+import Button from "../UI/Button";
 
 const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
@@ -21,7 +22,7 @@ const ExpenseForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const newExpense = {
-      id: Math.random() * 5,
+      id: (Math.random() * 5).toString(),
       title: title,
       amount: amount,
       date: date,
@@ -75,10 +76,10 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button onClick={cancelFormHandler} type="button">
+        <Button onClick={cancelFormHandler} type="button">
           Cancel
-        </button>
-        <button type="submit">Add Expense</button>
+        </Button>
+        <Button type="submit">Add Expense</Button>
       </div>
     </form>
   );

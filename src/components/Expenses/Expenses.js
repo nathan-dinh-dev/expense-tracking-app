@@ -24,6 +24,10 @@ const Expenses = (props) => {
     );
   };
 
+  const removeHandler = (itemID) => {
+    props.onRemove(itemID);
+  };
+
   return (
     <Card className="expenses">
       <ExpensesChart items={yearFilteredArray()} />
@@ -37,6 +41,8 @@ const Expenses = (props) => {
         items={yearFilteredArray()}
         yearFiltered={yearFiltered}
         sortedOption={sortedOption}
+        isDelete={props.isDelete}
+        onRemove={removeHandler}
       />
     </Card>
   );

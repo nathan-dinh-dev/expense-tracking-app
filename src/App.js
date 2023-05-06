@@ -31,6 +31,7 @@ const DUMMY_EXPENSE = [
 
 function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
+  const [isDelete, setIsDelete] = useState(false);
 
   const addNewExpenseHandler = (newExpense) => {
     setExpenses((prevState) => {
@@ -39,10 +40,25 @@ function App() {
     });
   };
 
+  const deleteHandler = (deleteStatus) => {
+    setIsDelete(deleteStatus);
+  };
+
+  const removeHandler = (itemID) => {
+    const newExpensesArray = expenses.filter(
+      (expense) => expense.id !== itemID
+    );
+    setExpenses(newExpensesArray);
+  };
+
   return (
     <div>
-      <NewExpense onAddNewExpense={addNewExpenseHandler} />
-      <Expenses items={expenses} />
+      <NewExpense
+        onAddNewExpense={addNewExpenseHandler}
+        items={expenses}
+        onDelete={deleteHandler}
+      />
+      <Expenses items={expenses} isDelete={isDelete} onRemove={removeHandler} />
     </div>
   );
 }

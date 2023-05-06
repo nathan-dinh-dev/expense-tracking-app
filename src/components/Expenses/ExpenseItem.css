@@ -37,6 +37,17 @@
   border-radius: 12px;
 }
 
+#modify-button {
+  padding: 0.6rem 0.8rem;
+  outline: 1px solid white;
+}
+
+#modify-button:active {
+  transform: translateY(-0.15rem);
+  outline: 1px solid red;
+  color: red;
+}
+
 @media (min-width: 580px) {
   .expense-item__description {
     flex-direction: row;
