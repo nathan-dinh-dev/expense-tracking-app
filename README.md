@@ -4,9 +4,19 @@ This application's goal is to make it possible for users to manage (add and dele
 
 - To add a new spending, click on "add a new expense" button and fill out the form.
 
+- To delete any spending, click on "delete expense" button to enter delete mode.
+
 - The spending can be sorted in "Newest", "Latest", "Amount: High to Low", or "Amount: Low to High".
 
 - It is possible to filter expenses by year, and there is also a chart showing monthly spending.
+
+## Multiple Versions of Code
+
+There are 3 branches which holds 3 versions of the code.
+
+Branch | main | global-css-version | styled-components-css-version
+--- | --- | --- | ---
+--- | Style with CSS Modules | Style with CSS Global | Style with CSS Styled Components library
 
 ## Available Scripts
 
