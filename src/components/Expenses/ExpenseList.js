@@ -1,5 +1,5 @@
 import ExpenseItem from "./ExpenseItem";
-import "./ExpenseList.css";
+import styles from "./ExpenseList.module.css";
 
 const ExpenseList = (props) => {
   const sorting = (data) => {
@@ -34,10 +34,12 @@ const ExpenseList = (props) => {
   };
 
   if (props.items.length === 0)
-    return <h4 className="expense-list__not-found">No expenses found.</h4>;
+    return (
+      <h4 className={styles["expense-list__not-found"]}>No expenses found.</h4>
+    );
 
   return (
-    <ul className="expense-list">
+    <ul className={styles["expense-list"]}>
       {sorting(props.items).map((item) => (
         <ExpenseItem
           id={item.id}

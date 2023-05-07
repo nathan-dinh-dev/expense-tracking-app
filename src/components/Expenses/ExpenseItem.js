@@ -1,4 +1,4 @@
-import "./ExpenseItem.css";
+import styles from "./ExpenseItem.module.css";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -10,13 +10,13 @@ const ExpenseItem = (props) => {
 
   return (
     <li>
-      <Card className="expense-item">
+      <Card className={styles["expense-item"]}>
         <ExpenseDate date={props.date} />
-        <div className="expense-item__description">
+        <div className={styles["expense-item__description"]}>
           <h2>{props.title}</h2>
-          <div className="expense-item__price">${props.amount}</div>
+          <div className={styles["expense-item__price"]}>${props.amount}</div>
           {props.isDelete && (
-            <Button onClick={removeHandler} id="modify-button">
+            <Button onClick={removeHandler} id={styles["modify-button"]}>
               Delete
             </Button>
           )}

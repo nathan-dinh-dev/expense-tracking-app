@@ -1,4 +1,4 @@
-import "./ExpenseFilter.css";
+import styles from "./ExpenseFilter.module.css";
 
 const ExpenseFilter = (props) => {
   const yearSelectedHandler = (event) => {
@@ -10,8 +10,8 @@ const ExpenseFilter = (props) => {
   };
 
   return (
-    <div className="expenses-filter">
-      <div className="expenses-filter__control">
+    <div className={styles["expenses-filter"]}>
+      <div className={styles["expenses-filter__control"]}>
         <label>Filter by year</label>
         <div>
           <select value={props.sorted} onChange={sortedHandler}>

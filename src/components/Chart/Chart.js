@@ -1,6 +1,5 @@
-import "./Chart.css";
+import styles from "./Chart.module.css";
 import ChartBar from "./ChartBar";
-import "./Chart.css";
 
 const Chart = (props) => {
   const totalMaximum = Math.max(
@@ -8,7 +7,7 @@ const Chart = (props) => {
   );
 
   return (
-    <div className="chart">
+    <div className={styles.chart}>
       {props.dataPoints.map((dataPoint) => (
         <ChartBar
           key={dataPoint.label}

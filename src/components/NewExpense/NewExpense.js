@@ -1,4 +1,4 @@
-import "./NewExpense.css";
+import styles from "./NewExpense.module.css";
 import ExpenseForm from "./ExpenseForm";
 import { useState } from "react";
 import Button from "../UI/Button";
@@ -34,7 +34,7 @@ const NewExpense = (props) => {
       {!isDelete ? (
         <Button
           onClick={deleteHandler}
-          className={`${props.items.length === 0 ? "disable" : ""}`}
+          className={`${props.items.length === 0 ? styles.disable : ""}`}
         >
           Delete Expense
         </Button>
@@ -52,7 +52,7 @@ const NewExpense = (props) => {
       />
     );
 
-  return <div className="new-expense">{content}</div>;
+  return <div className={styles["new-expense"]}>{content}</div>;
 };
 
 export default NewExpense;
