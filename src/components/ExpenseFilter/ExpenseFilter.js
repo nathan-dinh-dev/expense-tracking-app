@@ -13,7 +13,7 @@ const ExpenseFilter = (props) => {
     <div className={styles["expenses-filter"]}>
       <div className={styles["expenses-filter__control"]}>
         <label>Filter by year</label>
-        <div>
+        <div className={styles["select-container"]}>
           <select value={props.sorted} onChange={sortedHandler}>
             <option value="Newest">Newest</option>
             <option value="Latest">Latest</option>
