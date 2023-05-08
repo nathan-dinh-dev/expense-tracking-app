@@ -1,6 +1,35 @@
-import styles from "./ExpenseForm.module.css";
+import styled from "styled-components";
 import { useState } from "react";
 import Button from "../UI/Button";
+
+const StyleExpenseControls = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+`;
+
+const StyleExpenseControl = styled.div`
+  & label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  & input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+`;
+
+const StyleExpenseActions = styled.div`
+  text-align: right;
+`;
 
 const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
@@ -43,8 +72,8 @@ const ExpenseForm = (props) => {
 
   return (
     <form action="" onSubmit={submitHandler}>
-      <div className={styles["new-expense__controls"]}>
-        <div className={styles["new-expense__control"]}>
+      <StyleExpenseControls>
+        <StyleExpenseControl>
           <label>Title</label>
           <input
             required
@@ -52,8 +81,9 @@ const ExpenseForm = (props) => {
             onChange={titleInputHandler}
             value={title}
           />
-        </div>
-        <div className={styles["new-expense__control"]}>
+        </StyleExpenseControl>
+
+        <StyleExpenseControl>
           <label>Amount</label>
           <input
             required
@@ -63,8 +93,9 @@ const ExpenseForm = (props) => {
             onChange={amountInputHandler}
             value={amount}
           />
-        </div>
-        <div className={styles["new-expense__control"]}>
+        </StyleExpenseControl>
+
+        <StyleExpenseControl>
           <label>Date</label>
           <input
             required
@@ -73,14 +104,16 @@ const ExpenseForm = (props) => {
             onChange={dateInputHandler}
             value={date}
           />
-        </div>
-      </div>
-      <div className={styles["new-expense__actions"]}>
+        </StyleExpenseControl>
+      </StyleExpenseControls>
+
+      <StyleExpenseActions>
         <Button onClick={cancelFormHandler} type="button">
           Cancel
         </Button>
+
         <Button type="submit">Add Expense</Button>
-      </div>
+      </StyleExpenseActions>
     </form>
   );
 };

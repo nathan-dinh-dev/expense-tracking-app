@@ -1,5 +1,15 @@
 import ExpenseItem from "./ExpenseItem";
-import styles from "./ExpenseList.module.css";
+import styled from "styled-components";
+
+const NotFound = styled.h4`
+  color: white;
+  padding-left: 0.5rem;
+`;
+
+const NewUl = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
 
 const ExpenseList = (props) => {
   const sorting = (data) => {
@@ -33,13 +43,10 @@ const ExpenseList = (props) => {
     props.onRemove(itemID);
   };
 
-  if (props.items.length === 0)
-    return (
-      <h4 className={styles["expense-list__not-found"]}>No expenses found.</h4>
-    );
+  if (props.items.length === 0) return <NotFound>No expenses found.</NotFound>;
 
   return (
-    <ul className={styles["expense-list"]}>
+    <NewUl>
       {sorting(props.items).map((item) => (
         <ExpenseItem
           id={item.id}
@@ -51,7 +58,7 @@ const ExpenseList = (props) => {
           onRemove={removeHandler}
         />
       ))}
-    </ul>
+    </NewUl>
   );
 };
 

@@ -1,9 +1,17 @@
-import styles from "./Expenses.module.css";
+import styled from "styled-components";
 import Card from "../UI/Card";
 import ExpenseFilter from "../ExpenseFilter/ExpenseFilter";
 import { useState } from "react";
 import ExpenseList from "./ExpenseList";
 import ExpensesChart from "./ExpensesChart";
+
+const NewCard = styled(Card)`
+  width: 50rem;
+  max-width: 95%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgb(31, 31, 31);
+`;
 
 const Expenses = (props) => {
   const [yearFiltered, setYearFilter] = useState("0000");
@@ -29,7 +37,7 @@ const Expenses = (props) => {
   };
 
   return (
-    <Card className={styles.expenses}>
+    <NewCard>
       <ExpensesChart items={yearFilteredArray()} />
       <ExpenseFilter
         yearSelected={yearFiltered}
@@ -44,7 +52,7 @@ const Expenses = (props) => {
         isDelete={props.isDelete}
         onRemove={removeHandler}
       />
-    </Card>
+    </NewCard>
   );
 };
 
