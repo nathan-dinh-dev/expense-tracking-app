@@ -1,6 +1,7 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { useState } from "react";
+import ConfirmModal from "./components/UI/ConfirmModal";
 
 const DUMMY_EXPENSE = [
   {
@@ -32,6 +33,7 @@ const DUMMY_EXPENSE = [
 function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
   const [isDelete, setIsDelete] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(null);
 
   const addNewExpenseHandler = (newExpense) => {
     setExpenses((prevState) => {
@@ -44,15 +46,31 @@ function App() {
     setIsDelete(deleteStatus);
   };
 
-  const removeHandler = (itemID) => {
-    const newExpensesArray = expenses.filter(
-      (expense) => expense.id !== itemID
+  const removeHandler = (item) => {
+    setDeleteItem(item);
+  };
+
+  const resetModalHandler = () => {
+    setDeleteItem(null);
+  };
+
+  const confirmDeleteHandler = () => {
+    setDeleteItem(null);
+    setExpenses((prevState) =>
+      prevState.filter((expense) => expense.id !== deleteItem.id)
     );
-    setExpenses(newExpensesArray);
   };
 
   return (
     <div>
+      {deleteItem && (
+        <ConfirmModal
+          title="Are You Sure?"
+          message={`This action cannot be undone. "${deleteItem.title}" with amount of $${deleteItem.amount} will be deleted permanently.`}
+          onReset={resetModalHandler}
+          onConfirm={confirmDeleteHandler}
+        />
+      )}
       <NewExpense
         onAddNewExpense={addNewExpenseHandler}
         items={expenses}
