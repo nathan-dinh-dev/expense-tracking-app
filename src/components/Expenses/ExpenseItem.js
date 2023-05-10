@@ -79,16 +79,16 @@ const NewButton = styled.button`
 
 const ExpenseItem = (props) => {
   const removeHandler = () => {
-    props.onRemove(props.id);
+    props.onRemove(props.item);
   };
 
   return (
     <li>
       <NewCard>
-        <ExpenseDate date={props.date} />
+        <ExpenseDate date={props.item.date} />
         <ExpenseItemDescription>
-          <h2>{props.title}</h2>
-          <ExpenseItemPrice>${props.amount}</ExpenseItemPrice>
+          <h2>{props.item.title}</h2>
+          <ExpenseItemPrice>${props.item.amount}</ExpenseItemPrice>
           {props.isDelete && (
             <NewButton onClick={removeHandler}>Delete</NewButton>
           )}

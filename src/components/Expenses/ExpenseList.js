@@ -39,8 +39,8 @@ const ExpenseList = (props) => {
       return data.sort((a, b) => a.amount - b.amount);
   };
 
-  const removeHandler = (itemID) => {
-    props.onRemove(itemID);
+  const removeHandler = (item) => {
+    props.onRemove(item);
   };
 
   if (props.items.length === 0) return <NotFound>No expenses found.</NotFound>;
@@ -49,11 +49,8 @@ const ExpenseList = (props) => {
     <NewUl>
       {sorting(props.items).map((item) => (
         <ExpenseItem
-          id={item.id}
+          item={item}
           key={item.id}
-          title={item.title}
-          amount={item.amount}
-          date={item.date}
           isDelete={props.isDelete}
           onRemove={removeHandler}
         />
