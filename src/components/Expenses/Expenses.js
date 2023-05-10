@@ -24,8 +24,8 @@ const Expenses = (props) => {
     );
   };
 
-  const removeHandler = (itemID) => {
-    props.onRemove(itemID);
+  const removeHandler = (item) => {
+    props.onRemove(item);
   };
 
   return (
